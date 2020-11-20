@@ -6,9 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainViewController.h"
+#import "DetailsViewController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController    
 
 
 @end
 
+UINavigationController *navController;
+MainViewController *mainController;
+DetailsViewController *detailsController;

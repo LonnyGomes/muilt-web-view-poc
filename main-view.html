@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+<body>
+    <h1>This is a test example2</h1>
+
+    <button id="btn" data-name="folder-name" onclick="btnHandler" class="button-item">Click me</button>
+    <script>
+        function btnHandler(evt) {
+            window.webkit.messageHandlers.btnClicked.postMessage("here is the val");
+            
+        }
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click', btnHandler);
+    </script>
+</body>
+</html>

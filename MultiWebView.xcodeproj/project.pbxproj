@@ -14,6 +14,9 @@
 		910C59B72565D8A100922CB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 910C59B62565D8A100922CB2 /* Assets.xcassets */; };
 		910C59BA2565D8A100922CB2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 910C59B82565D8A100922CB2 /* LaunchScreen.storyboard */; };
 		910C59BD2565D8A100922CB2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 910C59BC2565D8A100922CB2 /* main.m */; };
+		910C59CC256613ED00922CB2 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 910C59CB256613ED00922CB2 /* DetailsViewController.m */; };
+		910C59D4256620B700922CB2 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 910C59D3256620B700922CB2 /* MainViewController.m */; };
+		91CC7C8B256656FC0077EA25 /* main-view.html in Resources */ = {isa = PBXBuildFile; fileRef = 91CC7C8A256656FC0077EA25 /* main-view.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,11 @@
 		910C59B92565D8A100922CB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		910C59BB2565D8A100922CB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		910C59BC2565D8A100922CB2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		910C59CA256613ED00922CB2 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		910C59CB256613ED00922CB2 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		910C59D2256620B700922CB2 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		910C59D3256620B700922CB2 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		91CC7C8A256656FC0077EA25 /* main-view.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "main-view.html"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +53,7 @@
 		910C599E2565D8A100922CB2 = {
 			isa = PBXGroup;
 			children = (
+				91CC7C8A256656FC0077EA25 /* main-view.html */,
 				910C59A92565D8A100922CB2 /* MultiWebView */,
 				910C59A82565D8A100922CB2 /* Products */,
 			);
@@ -67,11 +76,15 @@
 				910C59AE2565D8A100922CB2 /* SceneDelegate.m */,
 				910C59B02565D8A100922CB2 /* ViewController.h */,
 				910C59B12565D8A100922CB2 /* ViewController.m */,
+				910C59D2256620B700922CB2 /* MainViewController.h */,
+				910C59D3256620B700922CB2 /* MainViewController.m */,
 				910C59B32565D8A100922CB2 /* Main.storyboard */,
 				910C59B62565D8A100922CB2 /* Assets.xcassets */,
 				910C59B82565D8A100922CB2 /* LaunchScreen.storyboard */,
 				910C59BB2565D8A100922CB2 /* Info.plist */,
 				910C59BC2565D8A100922CB2 /* main.m */,
+				910C59CA256613ED00922CB2 /* DetailsViewController.h */,
+				910C59CB256613ED00922CB2 /* DetailsViewController.m */,
 			);
 			path = MultiWebView;
 			sourceTree = "<group>";
@@ -134,6 +147,7 @@
 			files = (
 				910C59BA2565D8A100922CB2 /* LaunchScreen.storyboard in Resources */,
 				910C59B72565D8A100922CB2 /* Assets.xcassets in Resources */,
+				91CC7C8B256656FC0077EA25 /* main-view.html in Resources */,
 				910C59B52565D8A100922CB2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,6 +160,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				910C59B22565D8A100922CB2 /* ViewController.m in Sources */,
+				910C59D4256620B700922CB2 /* MainViewController.m in Sources */,
+				910C59CC256613ED00922CB2 /* DetailsViewController.m in Sources */,
 				910C59AC2565D8A100922CB2 /* AppDelegate.m in Sources */,
 				910C59BD2565D8A100922CB2 /* main.m in Sources */,
 				910C59AF2565D8A100922CB2 /* SceneDelegate.m in Sources */,
