@@ -26,16 +26,31 @@
     
     
     UIToolbar *toolbar = [[UIToolbar alloc] init];
-    toolbar.frame = CGRectMake(0, 0, 300, 44);
     UIBarButtonItem *button1 = [[UIBarButtonItem alloc] initWithTitle:@"Send" style:UIBarButtonItemStyleDone target:self action:@selector(sendAction)];
 
     UIBarButtonItem *button2=[[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(cancelAction)];
 
-    
+    // https://www.thinkandbuild.it/learn-to-love-auto-layout-programmatically/
     [toolbar setItems:[[NSArray alloc] initWithObjects:button1,button2, nil]];
+    [toolbar setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    WKWebView *wv = [self loadContent];
+    // [wv setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    NSDictionary *viewsDictionary = @{@"webView":wv, @"toolbarView": toolbar};
     
     
-    [self loadContent];
+    NSArray *constraintToolbarV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[toolbarView(50)]"
+                                                                    options:0
+                                                                    metrics:nil
+                                                                      views:viewsDictionary];
+        
+    NSArray *constraintToolbarH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[toolbarView(350)]"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:viewsDictionary];
+    [toolbar addConstraints:constraintToolbarV];
+    [toolbar addConstraints:constraintToolbarH];
     
     [self.view addSubview:toolbar];
 }
@@ -49,7 +64,7 @@
     NSLog(@"Cancel");
 }
 
-- (void)loadContent {
+- (WKWebView *)loadContent {
     WKWebViewConfiguration *theConfiguration = [[WKWebViewConfiguration alloc] init];
     CGRect wvFrame = self.view.frame;
     // wvFrame.origin.y = 50;
@@ -62,6 +77,8 @@
     
     [webView loadRequest:nsrequest];
     [self.view addSubview:webView];
+    
+    return webView;
 }
 
 /*
