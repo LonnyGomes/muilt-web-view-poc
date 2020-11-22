@@ -24,6 +24,13 @@
     // layout anchors
     // https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/ProgrammaticallyCreatingConstraints.html
     
+    NSString *inputData =  @"{\"title\": \"value\", \"isDarkmode\": false, \"orientation\": \"landscape\" }";
+    NSError *error = nil;
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[inputData dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
+
+    if (error) {
+        NSLog(@"Error: %@", error.domain)
+    }
     
     UIToolbar *toolbar = [[UIToolbar alloc] init];
     UIBarButtonItem *button1 = [[UIBarButtonItem alloc] initWithTitle:@"Send" style:UIBarButtonItemStyleDone target:self action:@selector(sendAction)];
