@@ -24,21 +24,42 @@
     // layout anchors
     // https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/ProgrammaticallyCreatingConstraints.html
     
-    NSString *inputData =  @"{\"title\": \"value\", \"isDarkmode\": false, \"orientation\": \"landscape\" }";
+    NSString *inputData =  @"{\"title\": \"Value for title that is very long so we can test if it truncates\", \"isDarkMode\": true, \"orientation\": \"landscape\" }";
     NSError *error = nil;
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[inputData dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
 
     if (error) {
-        NSLog(@"Error: %@", error.domain)
+        // could not parse, so set defaults
+        json = @{@"title": @"", @"isDarkMode": @NO, @"orientation": @"landscape"};
     }
     
-    UIToolbar *toolbar = [[UIToolbar alloc] init];
+    UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+
+    CGRect tbFrame = CGRectMake(0, 0, self.view.frame.size.width, 45.0);
+    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:tbFrame];
+
     UIBarButtonItem *button1 = [[UIBarButtonItem alloc] initWithTitle:@"Send" style:UIBarButtonItemStyleDone target:self action:@selector(sendAction)];
 
-    UIBarButtonItem *button2=[[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(cancelAction)];
+    UILabel *labelTxt = [[UILabel alloc] init];
+    [labelTxt setText:[json valueForKey:@"title"]];
+    [labelTxt setFont:[UIFont fontWithName:@"Georgia-Bold" size:18.0]];
+    //[labelTxt setTextColor:[UIColor blackColor]];
+    UIBarButtonItem *label = [[UIBarButtonItem alloc] initWithCustomView:labelTxt];
+    NSNumber *isDarkMode = (NSNumber *)[json valueForKey:@"isDarkMode"];
+    
+    if ([isDarkMode boolValue] == YES) {
+        [toolbar setTintColor:[UIColor whiteColor]];
+        [toolbar setBackgroundColor:[UIColor blackColor]];
+    }
+    
+//    for( NSString *strFamilyName in [UIFont familyNames] ) {
+//      for( NSString *strFontName in [UIFont fontNamesForFamilyName:strFamilyName] ) {
+//        NSLog(@"%@", strFontName);
+//      }
+//    }
 
     // https://www.thinkandbuild.it/learn-to-love-auto-layout-programmatically/
-    [toolbar setItems:[[NSArray alloc] initWithObjects:button1,button2, nil]];
+    [toolbar setItems:[[NSArray alloc] initWithObjects:button1, spacer, label, nil]];
     [toolbar setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     WKWebView *wv = [self loadContent];
@@ -65,10 +86,6 @@
 -(void)sendAction {
     NSLog(@"Send");
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
--(void)cancelAction {
-    NSLog(@"Cancel");
 }
 
 - (WKWebView *)loadContent {
